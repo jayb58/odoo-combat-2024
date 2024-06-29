@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Workouts{% endblock %}
+{% block content %}
+    <h1>Workout Plans</h1>
+    {% for workout in workouts %}
+        <div>
+            <h2>{{ workout.name }}</h2>
+            <p>{{ workout.description }}</p>
+            <p>Difficulty: {{ workout.difficulty }}</p>
+            <p>Created by: {{ workout.trainer_id }}</p>
+            <p>Created at: {{ workout.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

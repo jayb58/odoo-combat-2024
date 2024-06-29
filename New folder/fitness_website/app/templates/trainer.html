@@ -1,0 +1,16 @@
+<h2>Create Diet Plan</h2>
+<form method="POST" action="{{ url_for('new_diet') }}">
+    {{ diet_form.hidden_tag() }}
+    <div>
+        {{ diet_form.name.label }}
+        {{ diet_form.name }}
+    </div>
+    <div>
+        {{ diet_form.description.label }}
+        {{ diet_form.description }}
+    </div>
+    <div>
+        {{ diet_form.submit }}
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('account') }}">Account</a>
+            {% if current_user.role == 'admin' %}
+                <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+            {% elif current_user.role == 'trainer' %}
+                <a href="{{ url_for('trainer_dashboard') }}">Trainer Dashboard</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <footer>
+        &copy; {{ now().year }} Level Up Your Fitness. All rights reserved.
+    </footer>
+</body>
+</html>

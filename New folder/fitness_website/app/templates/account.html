@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Account{% endblock %}
+{% block content %}
+    <section class="account-details">
+        <h2>Account Information</h2>
+        <p>Username: {{ current_user.username }}</p>
+        <p>Email: {{ current_user.email }}</p>
+        <p>Role: {{ current_user.role }}</p>
+    </section>
+{% endblock %}
